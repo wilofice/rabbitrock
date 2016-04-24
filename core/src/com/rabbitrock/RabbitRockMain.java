@@ -6,6 +6,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.rabbitrock.game.WorldController;
 import com.rabbitrock.game.WorldRenderer;
+import com.badlogic.gdx.assets.AssetManager;
+import com.rabbitrock.game.Assets;
 
 public class RabbitRockMain extends ApplicationAdapter {
 	public static final String TAG = RabbitRockMain.class.getName();
@@ -16,6 +18,8 @@ public class RabbitRockMain extends ApplicationAdapter {
 	@Override public void create() {
 		//Set Libgdx log level to DEBUG
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+		// Load assets
+		Assets.instance.init(new AssetManager());
 		//Initialize controller and renderer
 		worldController = new WorldController();
 		worldRenderer = new WorldRenderer(worldController);
@@ -53,6 +57,7 @@ public class RabbitRockMain extends ApplicationAdapter {
 	}
 	@Override public void dispose() {
 		worldRenderer.dispose();
+		Assets.instance.dispose();
 	}
 	
 }
