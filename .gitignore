@@ -63,5 +63,6 @@ build/
 ## OS Specific
 .DS_Store
 /android/
-/desktop/
 /core/
+/desktop/
+
