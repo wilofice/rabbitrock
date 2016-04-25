@@ -63,5 +63,7 @@ build/
 ## OS Specific
 .DS_Store
 /android/
+<<<<<<< HEAD
 /core/
 /desktop/
+>>>>>>> alahassa
