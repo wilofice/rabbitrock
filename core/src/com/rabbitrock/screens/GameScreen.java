@@ -1,6 +1,6 @@
 package com.rabbitrock.screens;
 
-<<<<<<< HEAD
+
 public class GameScreen extends AbstractGameScreen {
 	 private static final String TAG = GameScreen.class.getName();
 	 
