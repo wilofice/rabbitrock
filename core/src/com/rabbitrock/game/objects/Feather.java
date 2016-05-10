@@ -23,6 +23,7 @@ public class Feather extends AbstractGameObject {
 
 	@Override
 	public void render(SpriteBatch batch) {
+		// A REVOIR SI !COLLECTED OU COLLECTED PAGE 201
 		if (!collected) {
 			TextureRegion reg = null;
 			reg = regFeather;

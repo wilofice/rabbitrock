@@ -34,9 +34,9 @@ public class Rock extends AbstractGameObject {
 	}
 
 	private void setLength(int length) {
-		this.length = length;
-		// Update bounding box for collision detection
-		bounds.set(0, 0, dimension.x * length, dimension.y);
+		  this.length = length;
+		  // Update bounding box for collision detection
+		  bounds.set(0, 0, dimension.x * length, dimension.y);
 	}
 
 	public void increaseLength(int amount) {
