@@ -10,4 +10,6 @@ public class Constants {
 		public static final String TEXTURE_ATLAS_OBJECTS = "images/canyonbunny.pack";
 		// Location of image file for level 01
 		public static final String LEVEL_01 = "levels/level-01.png";
+		// Duration of feather power-up in seconds
+		public static final float ITEM_FEATHER_POWERUP_DURATION = 9;
 }

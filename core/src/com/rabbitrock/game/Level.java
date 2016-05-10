@@ -1,10 +1,15 @@
-package com.rabbitrock.game.objects;
+package com.rabbitrock.game;
 
 import com.badlogic.gdx.Gdx;
-
+import com.rabbitrock.game.objects.AbstractGameObject;
 import com.rabbitrock.game.objects.BunnyHead;
+import com.rabbitrock.game.objects.Carrot;
+import com.rabbitrock.game.objects.Clouds;
 import com.rabbitrock.game.objects.Feather;
 import com.rabbitrock.game.objects.GoldCoin;
+import com.rabbitrock.game.objects.Mountains;
+import com.rabbitrock.game.objects.Rock;
+import com.rabbitrock.game.objects.WaterOverlay;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
@@ -12,9 +17,6 @@ import com.badlogic.gdx.utils.Array;
 public class Level {
 
 	public static final String TAG = Level.class.getName();
-	public BunnyHead bunnyHead;
-	public Array<GoldCoin> goldcoins;
-	public Array<Feather> feathers;
 
 	// objects
 	public Array<Rock> rocks;
@@ -30,7 +32,6 @@ public class Level {
 	public Array<Feather> feathers;
 
 	public Array<Carrot> carrots;
-	public Goal goal;
 
 	public enum BLOCK_TYPE {
 
@@ -120,13 +121,6 @@ public class Level {
 			        obj.position.set(pixelX,baseHeight * obj.dimension.y  + offsetHeight);
 			goldcoins.add((GoldCoin)obj);
 				}
-				// goal
-				else if (BLOCK_TYPE.GOAL.sameColor(currentPixel)) {
-					obj = new Goal();
-					offsetHeight = -7.0f;
-					obj.position.set(pixelX, baseHeight + offsetHeight);
-					goal = (Goal) obj;
-				}
 				// unknown object/pixel color
 				else {
 					int r = 0xff & currentPixel >>> 24; // red color channel
@@ -186,26 +180,6 @@ public class Level {
 		}
 		clouds.update(deltaTime);
 	}
-	public void update (float deltaTime) {
-		  bunnyHead.update(deltaTime);
-		  for(Rock rock : rocks)
-		    rock.update(deltaTime);
-		  for(GoldCoin goldCoin : goldcoins)
-		    goldCoin.update(deltaTime);
-		  for(Feather feather : feathers)
-			    feather.update(deltaTime);
-		  clouds.update(deltaTime);
-		}
 	
-	public void update (float deltaTime) {
-		  bunnyHead.update(deltaTime);
-		  for(Rock rock : rocks)
-		    rock.update(deltaTime);
-		  for(GoldCoin goldCoin : goldcoins)
-		    goldCoin.update(deltaTime);
-		  for(Feather feather : feathers)
-		    feather.update(deltaTime);
-		  clouds.update(deltaTime);
-		}
 
 }
