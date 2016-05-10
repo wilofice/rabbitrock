@@ -1,6 +1,15 @@
-package com.rabbitrock.game.objects;
+package com.rabbitrock.game;
 
 import com.badlogic.gdx.Gdx;
+import com.rabbitrock.game.objects.AbstractGameObject;
+import com.rabbitrock.game.objects.BunnyHead;
+import com.rabbitrock.game.objects.Carrot;
+import com.rabbitrock.game.objects.Clouds;
+import com.rabbitrock.game.objects.Feather;
+import com.rabbitrock.game.objects.GoldCoin;
+import com.rabbitrock.game.objects.Mountains;
+import com.rabbitrock.game.objects.Rock;
+import com.rabbitrock.game.objects.WaterOverlay;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
@@ -23,7 +32,6 @@ public class Level {
 	public Array<Feather> feathers;
 
 	public Array<Carrot> carrots;
-	public Goal goal;
 
 	public enum BLOCK_TYPE {
 
@@ -55,19 +63,16 @@ public class Level {
 	}
 
 	private void init(String filename) {
-		// player character
-		bunnyHead = null;
-
-		// objects
-		rocks = new Array<Rock>();
-		goldcoins = new Array<GoldCoin>();
-		feathers = new Array<Feather>();
-		carrots = new Array<Carrot>();
-
-		// load image file that represents the level data
-		Pixmap pixmap = new Pixmap(Gdx.files.internal(filename));
-		// scan pixels from top-left to bottom-right
-		int lastPixel = -1;
+		  // player character
+		  bunnyHead = null;
+		  // objects
+		  rocks = new Array<Rock>();
+		  goldcoins = new Array<GoldCoin>();
+		  feathers = new Array<Feather>();
+		  // load image file that represents the level data
+		  Pixmap pixmap = new Pixmap(Gdx.files.internal(filename));
+		  // scan pixels from top-left to bottom-right
+		  int lastPixel = -1;
 		for (int pixelY = 0; pixelY < pixmap.getHeight(); pixelY++) {
 			for (int pixelX = 0; pixelX < pixmap.getWidth(); pixelX++) {
 				AbstractGameObject obj = null;
@@ -97,31 +102,24 @@ public class Level {
 				}
 				// player spawn point
 				else if (BLOCK_TYPE.PLAYER_SPAWNPOINT.sameColor(currentPixel)) {
-					obj = new BunnyHead();
-					offsetHeight = -3.0f;
-					obj.position.set(pixelX, baseHeight * obj.dimension.y + offsetHeight);
-					bunnyHead = (BunnyHead) obj;
+			        obj = new BunnyHead();
+			        offsetHeight = -3.0f;
+			        obj.position.set(pixelX,baseHeight * obj.dimension.y +  offsetHeight);
+			        bunnyHead = (BunnyHead)obj;
 				}
 				// feather
 				else if (BLOCK_TYPE.ITEM_FEATHER.sameColor(currentPixel)) {
-					obj = new Feather();
-					offsetHeight = -1.5f;
-					obj.position.set(pixelX, baseHeight * obj.dimension.y + offsetHeight);
-					feathers.add((Feather) obj);
+			        obj = new Feather();
+			        offsetHeight = -1.5f;
+			        obj.position.set(pixelX,baseHeight * obj.dimension.y  + offsetHeight);
+			        feathers.add((Feather)obj);
 				}
 				// gold coin
 				else if (BLOCK_TYPE.ITEM_GOLD_COIN.sameColor(currentPixel)) {
-					obj = new GoldCoin();
-					offsetHeight = -1.5f;
-					obj.position.set(pixelX, baseHeight * obj.dimension.y + offsetHeight);
-					goldcoins.add((GoldCoin) obj);
-				}
-				// goal
-				else if (BLOCK_TYPE.GOAL.sameColor(currentPixel)) {
-					obj = new Goal();
-					offsetHeight = -7.0f;
-					obj.position.set(pixelX, baseHeight + offsetHeight);
-					goal = (Goal) obj;
+			        obj = new GoldCoin();
+			        offsetHeight = -1.5f;
+			        obj.position.set(pixelX,baseHeight * obj.dimension.y  + offsetHeight);
+			goldcoins.add((GoldCoin)obj);
 				}
 				// unknown object/pixel color
 				else {
@@ -146,28 +144,24 @@ public class Level {
 		Gdx.app.debug(TAG, "level '" + filename + "' loaded");
 	}
 
-	public void render(SpriteBatch batch) {
-		mountains.render(batch);
-		// Draw Goal
-		goal.render(batch);
-		for (Rock rock : rocks) {
-			rock.render(batch);
-		}
-		// Draw Gold Coins
-		for (GoldCoin goldCoin : goldcoins) {
-			goldCoin.render(batch);
-		}
-		// Draw Feathers
-		for (Feather feather : feathers) {
-			feather.render(batch);
-		}
-		for (Carrot carrot : carrots) {
-			carrot.render(batch);
-		}
-		// Draw Player Character
-		bunnyHead.render(batch);
-		waterOverlay.render(batch);
-		clouds.render(batch);
+	public void render (SpriteBatch batch) {
+	    // Draw Mountains
+	    mountains.render(batch);
+	    // Draw Rocks
+	    for (Rock rock : rocks)
+	        rock.render(batch);
+	    // Draw Gold Coins
+	    for (GoldCoin goldCoin : goldcoins)
+	        goldCoin.render(batch);
+	    // Draw Feathers
+	    for (Feather feather : feathers)
+	        feather.render(batch);
+	    // Draw Player Character
+	    bunnyHead.render(batch);
+	    // Draw Water Overlay
+	    waterOverlay.render(batch);
+	    // Draw Clouds
+	    clouds.render(batch);
 	}
 
 	public void update(float deltaTime) {
@@ -186,5 +180,6 @@ public class Level {
 		}
 		clouds.update(deltaTime);
 	}
+	
 
 }

@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.canyonbunny.game.Assets;
+import com.rabbitrock.game.Assets;
 
 public class Mountains extends AbstractGameObject {
 
