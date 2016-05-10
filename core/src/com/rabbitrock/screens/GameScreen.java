@@ -1,10 +1,6 @@
 package com.rabbitrock.screens;
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.rabbitrock.game.WorldController; 
-import com.rabbitrock.game.WorldRenderer;
 
+<<<<<<< HEAD
 public class GameScreen extends AbstractGameScreen {
 	 private static final String TAG = GameScreen.class.getName();
 	 
@@ -47,13 +43,4 @@ public class GameScreen extends AbstractGameScreen {
 	  public void hide () {  
 		  worldRenderer.dispose();  
 		  Gdx.input.setCatchBackKey(false); 
-}
-	  @Override 
-	  public void pause () { 
-		  paused = true;  }
-	  @Override 
-	  public void resume () {  
-		  super.resume();    
-		  // Only called on Android!   
-		  paused = false;  }
-}
+}}
