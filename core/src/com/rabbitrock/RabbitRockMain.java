@@ -8,8 +8,9 @@ import com.rabbitrock.game.WorldController;
 import com.rabbitrock.game.WorldRenderer;
 import com.badlogic.gdx.assets.AssetManager;
 import com.rabbitrock.game.Assets;
+import com.rabbitrock.screens.DirectedGame;
 
-public class RabbitRockMain extends ApplicationAdapter {
+public class RabbitRockMain extends DirectedGame {
 	public static final String TAG = RabbitRockMain.class.getName();
 	private boolean paused;
 	private WorldController worldController;

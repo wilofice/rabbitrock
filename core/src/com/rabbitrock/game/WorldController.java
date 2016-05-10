@@ -19,9 +19,14 @@ import com.rabbitrock.util.CameraHelper;
 import com.rabbitrock.util.Constants;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.Game;
+import com.rabbitrock.screens.MenuScreen;
 
 public class WorldController extends InputAdapter {
 	 private static final String TAG = WorldController.class.getName();
+	 private Game game;
+	 public float scoreVisual;
+	 public float livesVisual;
 
 	 public Level level;
 	 public int score;
@@ -29,6 +34,10 @@ public class WorldController extends InputAdapter {
      public int selectedSprite;
 
      public CameraHelper cameraHelper;
+     private void backToMenu () {
+    	    // switch to menu screen
+    	    game.setScreen(new MenuScreen(game));
+    	  }
 
      public WorldController () {
              init();
@@ -37,6 +46,8 @@ public class WorldController extends InputAdapter {
      private void init () {
              Gdx.input.setInputProcessor(this);
              cameraHelper = new CameraHelper();
+             lives = Constants.LIVES_START;
+             livesVisual = lives;
              initTestObjects();
              timeLeftGameOverDelay = 0;
              initLevel();
@@ -88,7 +99,7 @@ public class WorldController extends InputAdapter {
     	  handleDebugInput(deltaTime);
     	  if (isGameOver()) {
     		    timeLeftGameOverDelay -= deltaTime;
-    		    if (timeLeftGameOverDelay < 0) init();
+    		    if (timeLeftGameOverDelay < 0) backToMenu();
     		  } else {
     	          handleInputGame(deltaTime);
     		  }
@@ -102,6 +113,12 @@ public class WorldController extends InputAdapter {
     		    else
     		      initLevel();
     		  }
+    	  level.mountains.updateScrollPosition 
+    	  (cameraHelper.getPosition());
+    	  if (livesVisual> lives)
+    		  livesVisual = Math.max(lives, livesVisual - 1 * deltaTime);
+    	  if (scoreVisual< score)
+    		  scoreVisual = Math.min(score, scoreVisual + 250 * deltaTime);
     	  }
     	}
 
@@ -178,6 +195,10 @@ public class WorldController extends InputAdapter {
 	         else if (keycode == Keys.ENTER) {
 	                 cameraHelper.setTarget(cameraHelper.hasTarget() ? null : testSprites[selectedSprite]);
 	                 Gdx.app.debug(TAG, "Camera follow enabled: " + cameraHelper.hasTarget());
+	         }
+	         // Back to Menu
+	         else if (keycode == Keys.ESCAPE || keycode == Keys.BACK) {
+	           backToMenu();
 	         }
 	         return false;
 	 }
@@ -262,6 +283,7 @@ public class WorldController extends InputAdapter {
 	}
 	private void initLevel () {
 		  score = 0;
+		  scoreVisual = score;
 		  level = new Level(Constants.LEVEL_01);
 		  cameraHelper.setTarget(level.bunnyHead);
 		}

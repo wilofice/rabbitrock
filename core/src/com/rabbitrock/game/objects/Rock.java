@@ -5,11 +5,15 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.rabbitrock.game.Assets;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 
 public class Rock extends AbstractGameObject {
 
 	private final float FLOAT_CYCLE_TIME = 2.0f;
 	private final float FLOAT_AMPLITUDE = 0.25f;
+	
+	
 
 	private float floatCycleTimeLeft;
 	private boolean floatingDownwards;

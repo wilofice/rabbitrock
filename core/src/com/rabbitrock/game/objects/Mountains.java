@@ -6,9 +6,11 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.rabbitrock.game.Assets;
 
+
 public class Mountains extends AbstractGameObject {
 
 	private TextureRegion regMountainLeft;
+	
 	private TextureRegion regMountainRight;
 	private int length;
 
@@ -45,6 +47,19 @@ public class Mountains extends AbstractGameObject {
 			reg = regMountainRight;
 			batch.draw(reg.getTexture(), origin.x + xRel + position.x * parallaxSpeedX, origin.y + yRel + position.y, origin.x, origin.y, dimension.x, dimension.y, scale.x, scale.y, rotation,
 					reg.getRegionX(), reg.getRegionY(), reg.getRegionWidth(), reg.getRegionHeight(), false, false);
+			xRel += dimension.x;
+		    // mountain right
+			reg = regMountainRight;
+			batch.draw(reg.getTexture(),  
+			origin.x + xRel + position.x * parallaxSpeedX,  
+			origin.y + yRel + position.y,  
+			origin.x, origin.y,  
+			dimension.x, dimension.y,  
+			scale.x, scale.y,  
+			rotation,  
+			reg.getRegionX(), reg.getRegionY(),  
+			reg.getRegionWidth(), reg.getRegionHeight(),  
+			false, false);
 			xRel += dimension.x;
 		}
 		// reset color to white

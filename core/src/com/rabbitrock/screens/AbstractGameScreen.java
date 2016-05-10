@@ -4,10 +4,13 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen; 
 import com.badlogic.gdx.assets.AssetManager;
 import com.rabbitrock.game.Assets;
+import com.badlogic.gdx.InputProcessor;
 
 public abstract class AbstractGameScreen implements Screen {
 	protected Game game;
-	public AbstractGameScreen (Game game) {  
+	public abstract InputProcessor getInputProcessor ();
+	protected DirectedGame game;
+    public AbstractGameScreen (DirectedGame game) { 
 		this.game = game; 
 	}
 	public abstract void render (float deltaTime);
