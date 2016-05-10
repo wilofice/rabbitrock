@@ -17,6 +17,9 @@ import com.badlogic.gdx.utils.Array;
 public class Level {
 
 	public static final String TAG = Level.class.getName();
+	public BunnyHead bunnyHead;
+	public Array<GoldCoin> goldcoins;
+	public Array<Feather> feathers;
 
 	// objects
 	public Array<Rock> rocks;
@@ -120,6 +123,8 @@ public class Level {
 			        offsetHeight = -1.5f;
 			        obj.position.set(pixelX,baseHeight * obj.dimension.y  + offsetHeight);
 			goldcoins.add((GoldCoin)obj);
+
+
 				}
 				// unknown object/pixel color
 				else {
@@ -180,6 +185,5 @@ public class Level {
 		}
 		clouds.update(deltaTime);
 	}
-	
 
 }

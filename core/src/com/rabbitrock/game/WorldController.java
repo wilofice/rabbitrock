@@ -1,4 +1,4 @@
-package com.rabbitrock.game;
+﻿package com.rabbitrock.game;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.rabbitrock.game.objects.BunnyHead;
