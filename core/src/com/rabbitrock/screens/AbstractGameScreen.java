@@ -5,8 +5,8 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.rabbitrock.game.Assets;
 
 public abstract class AbstractGameScreen implements Screen {
-	protected Game gamen;
-}
+	protected Game game;
+
 public AbstractGameScreen (Game game) {  
 	this.game = game; 
 }

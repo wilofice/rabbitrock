@@ -8,7 +8,7 @@ public class MenuScreen extends AbstractGameScreen {
 	  public MenuScreen (Game game) {   
 		  super(game); 
 	  }
-}
+
 
 @Override 
 public void render (float deltaTime) {   

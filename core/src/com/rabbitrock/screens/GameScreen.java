@@ -16,7 +16,7 @@ public class GameScreen extends AbstractGameScreen {
 	 public GameScreen (Game game) {   
 		  super(game);  
 	  }	 
-}
+
 @Override  public void render (float deltaTime) { 
 	// Do not update game world when paused. 
 	if (!paused) {   
@@ -40,7 +40,7 @@ public class GameScreen extends AbstractGameScreen {
 
  @Override 
 	  public void show () {  
-		  worldController = new WorldController(game);
+		  worldController = new WorldController();
 		  worldRenderer = new WorldRenderer(worldController);
 		  Gdx.input.setCatchBackKey(true);
 }
