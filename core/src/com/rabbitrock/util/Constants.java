@@ -12,4 +12,6 @@ public class Constants {
 		public static final String LEVEL_01 = "levels/level-01.png";
 		// Duration of feather power-up in seconds
 		public static final float ITEM_FEATHER_POWERUP_DURATION = 9;
+		// Delay after game over
+		public static final float TIME_DELAY_GAME_OVER = 3;
 }

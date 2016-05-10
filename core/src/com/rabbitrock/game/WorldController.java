@@ -38,6 +38,7 @@ public class WorldController extends InputAdapter {
              Gdx.input.setInputProcessor(this);
              cameraHelper = new CameraHelper();
              initTestObjects();
+             timeLeftGameOverDelay = 0;
              initLevel();
      }
 
@@ -85,9 +86,23 @@ public class WorldController extends InputAdapter {
 
      public void update (float deltaTime) {
     	  handleDebugInput(deltaTime);
+    	  if (isGameOver()) {
+    		    timeLeftGameOverDelay -= deltaTime;
+    		    if (timeLeftGameOverDelay < 0) init();
+    		  } else {
+    	          handleInputGame(deltaTime);
+    		  }
     	  level.update(deltaTime);
     	  testCollisions();
     	  cameraHelper.update(deltaTime);
+    	  if (!isGameOver() && isPlayerInWater()) {
+    		    lives--;
+    		    if (isGameOver())
+    		      timeLeftGameOverDelay = Constants.TIME_DELAY_GAME_OVER;
+    		    else
+    		      initLevel();
+    		  }
+    	  }
     	}
 
      private void updateTestObjects (float deltaTime) {
@@ -110,7 +125,8 @@ public class WorldController extends InputAdapter {
              if (Gdx.input.isKeyPressed(Keys.D)) moveSelectedSprite(sprMoveSpeed, 0);
              if (Gdx.input.isKeyPressed(Keys.W)) moveSelectedSprite(0, sprMoveSpeed);
              if (Gdx.input.isKeyPressed(Keys.S)) moveSelectedSprite(0, -sprMoveSpeed);
-
+             
+             if (!cameraHelper.hasTarget(level.bunnyHead)) {
              // Camera Controls (move)
              float camMoveSpeed = 5 * deltaTime;
              float camMoveSpeedAccelerationFactor = 5;
@@ -120,7 +136,7 @@ public class WorldController extends InputAdapter {
              if (Gdx.input.isKeyPressed(Keys.UP)) moveCamera(0, camMoveSpeed);
              if (Gdx.input.isKeyPressed(Keys.DOWN)) moveCamera(0, -camMoveSpeed);
              if (Gdx.input.isKeyPressed(Keys.BACKSPACE)) cameraHelper.setPosition(0, 0);
-
+             }
              // Camera Controls (zoom)
              float camZoomSpeed = 1 * deltaTime;
              float camZoomSpeedAccelerationFactor = 5;
@@ -128,6 +144,8 @@ public class WorldController extends InputAdapter {
              if (Gdx.input.isKeyPressed(Keys.COMMA)) cameraHelper.addZoom(camZoomSpeed);
              if (Gdx.input.isKeyPressed(Keys.PERIOD)) cameraHelper.addZoom(-camZoomSpeed);
              if (Gdx.input.isKeyPressed(Keys.SLASH)) cameraHelper.setZoom(1);
+             
+             
      }
 
      private void moveSelectedSprite (float x, float y) {
@@ -247,6 +265,38 @@ public class WorldController extends InputAdapter {
 		  level = new Level(Constants.LEVEL_01);
 		  cameraHelper.setTarget(level.bunnyHead);
 		}
+	private void handleInputGame (float deltaTime) {
+		  if (cameraHelper.hasTarget(level.bunnyHead)) {
+		    // Player Movement
+		    if (Gdx.input.isKeyPressed(Keys.LEFT)) {
+		      level.bunnyHead.velocity.x =  
+		-level.bunnyHead.terminalVelocity.x;
+		    } else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+		      level.bunnyHead.velocity.x =  
+		level.bunnyHead.terminalVelocity.x;
+		    } else {
+		      // Execute auto-forward movement on non-desktop platform
+		      if (Gdx.app.getType() != ApplicationType.Desktop) {
+		        level.bunnyHead.velocity.x =  
+		        level.bunnyHead.terminalVelocity.x;
+		      }
+		    }
+		    // Bunny Jump
+		    if (Gdx.input.isTouched() ||  
+		Gdx.input.isKeyPressed(Keys.SPACE)) {
+		      level.bunnyHead.setJumping(true);
+		    } else {
+		      level.bunnyHead.setJumping(false);
+		    }
+		  }
+		}
+	private float timeLeftGameOverDelay;
+	public boolean isGameOver () {
+	  return lives < 0;
+	}
+	public boolean isPlayerInWater () {
+	  return level.bunnyHead.position.y < -5;
+	}
 }
 
 
