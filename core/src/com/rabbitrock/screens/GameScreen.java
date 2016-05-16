@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.rabbitrock.game.WorldController; 
 import com.rabbitrock.game.WorldRenderer;
+import com.rabbitrock.util.GamePreferences;
 
 public class GameScreen extends AbstractGameScreen {
 	 private static final String TAG = GameScreen.class.getName();
@@ -41,7 +42,8 @@ public void render (float deltaTime) {
 
  @Override 
 	  public void show () {  
-		  worldController = new WorldController();
+	 	  GamePreferences.instance.load(); 
+		  worldController = new WorldController(game);
 		  worldRenderer = new WorldRenderer(worldController);
 		  Gdx.input.setCatchBackKey(true);
 }
