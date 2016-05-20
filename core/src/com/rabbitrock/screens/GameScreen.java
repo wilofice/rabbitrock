@@ -1,10 +1,10 @@
 package com.rabbitrock.screens;
-
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.rabbitrock.game.WorldController;
+import com.rabbitrock.game.WorldController; 
 import com.rabbitrock.game.WorldRenderer;
+import com.rabbitrock.util.GamePreferences;
 
 public class GameScreen extends AbstractGameScreen {
 	 private static final String TAG = GameScreen.class.getName();
@@ -18,7 +18,9 @@ public class GameScreen extends AbstractGameScreen {
 		  super(game);  
 	  }	 
 
-@Override  public void render (float deltaTime) { 
+
+@Override 
+public void render (float deltaTime) { 
 	// Do not update game world when paused. 
 	if (!paused) {   
 		// Update game world by the time that has passed    
@@ -36,12 +38,11 @@ public class GameScreen extends AbstractGameScreen {
 @Override 
 	public void resize (int width, int height) {  
 		worldRenderer.resize(width, height); 
-		
 }
-
  @Override 
 	  public void show () {  
-		  worldController = new WorldController();
+	 	  GamePreferences.instance.load(); 
+		  worldController = new WorldController(game);
 		  worldRenderer = new WorldRenderer(worldController);
 		  Gdx.input.setCatchBackKey(true);
 }
@@ -50,8 +51,12 @@ public class GameScreen extends AbstractGameScreen {
 		  Gdx.input.setCatchBackKey(false); 
 }
 
-	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-		
-	}}
+@Override  public void pause () {   
+	paused = true;
+}
+
+@Override  public void resume () { 
+	super.resume();  
+	// Only called on Android!   
+	paused = false;  }
+} 
