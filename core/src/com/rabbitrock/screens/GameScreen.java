@@ -18,7 +18,6 @@ public class GameScreen extends AbstractGameScreen {
 		  super(game);  
 	  }	 
 
-
 @Override 
 public void render (float deltaTime) { 
 	// Do not update game world when paused. 
@@ -38,7 +37,9 @@ public void render (float deltaTime) {
 @Override 
 	public void resize (int width, int height) {  
 		worldRenderer.resize(width, height); 
+		
 }
+
  @Override 
 	  public void show () {  
 	 	  GamePreferences.instance.load(); 

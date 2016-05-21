@@ -24,13 +24,11 @@ import com.rabbitrock.util.Constants;
 import com.rabbitrock.util.CharacterSkin; 
 import com.rabbitrock.util.GamePreferences;
 
-
 public class MenuScreen extends AbstractGameScreen  {
 	private static final String TAG = MenuScreen.class.getName();
 	  public MenuScreen (Game game) {
 		  super(game);
 	  }
-
 
 @Override 
 public void render (float deltaTime) { 
@@ -333,4 +331,3 @@ btnWinOptCancel.addListener(new ChangeListener() {
 return tbl;
 }
 }
-
