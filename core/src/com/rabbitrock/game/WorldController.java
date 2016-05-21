@@ -25,6 +25,12 @@ import com.badlogic.gdx.utils.Array;
 =======
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
+<<<<<<< Updated upstream
+import com.badlogic.gdx.Game;
+import com.rabbitrock.screens.MenuScreen;
+>>>>>>> Stashed changes
+||||||| merged common ancestors
+=======
 import com.badlogic.gdx.Game;
 import com.rabbitrock.screens.MenuScreen;
 >>>>>>> Stashed changes
@@ -54,8 +60,9 @@ public class WorldController extends InputAdapter {
 
      public CameraHelper cameraHelper;
 
-     public WorldController () {
-             init();
+     public WorldController (Game game) {
+    	 this.game = game;
+         init();
      }
 
      private void init () {
@@ -109,6 +116,13 @@ public class WorldController extends InputAdapter {
 
      public void update (float deltaTime) {
     	  handleDebugInput(deltaTime);
+    	  if (isGameOver()) {   
+    		  timeLeftGameOverDelay -= deltaTime; 
+    		  if (timeLeftGameOverDelay < 0) backToMenu();  
+    	  } 
+    	  else {   
+    			  handleInputGame(deltaTime);    
+    	  }
     	  level.update(deltaTime);
     	  testCollisions();
     	  cameraHelper.update(deltaTime);
@@ -184,6 +198,10 @@ public class WorldController extends InputAdapter {
 	         else if (keycode == Keys.ENTER) {
 	                 cameraHelper.setTarget(cameraHelper.hasTarget() ? null : testSprites[selectedSprite]);
 	                 Gdx.app.debug(TAG, "Camera follow enabled: " + cameraHelper.hasTarget());
+	         }
+	      // Back to Menu    
+	         else if (keycode == Keys.ESCAPE || keycode == Keys.BACK) {   
+	        	 backToMenu();
 	         }
 	         return false;
 	 }
@@ -491,6 +509,7 @@ public class WorldController extends InputAdapter {
 			if (Gdx.input.isKeyPressed(Keys.BACKSPACE)) cameraHelper.setPosition(0, 0);
 		}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ||||||| merged common ancestors
 }
 =======
@@ -513,6 +532,19 @@ public class WorldController extends InputAdapter {
 		if (Gdx.input.isKeyPressed(Keys.PERIOD)) cameraHelper.addZoom(-camZoomSpeed);
 		if (Gdx.input.isKeyPressed(Keys.SLASH)) cameraHelper.setZoom(1);
 	}
+||||||| merged common ancestors
+}
+=======
+	 private Game game;
+	  private void backToMenu () { 
+		  // switch to menu screen    
+		  game.setScreen(new MenuScreen(game)); 
+		  } 
+	  }
+
+
+
+>>>>>>> Stashed changes
 
 	private void handleInputGame (float deltaTime) {
 		if (cameraHelper.hasTarget(level.bunnyHead)) {
