@@ -1,11 +1,16 @@
 package com.rabbitrock.screens;
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 ||||||| merged common ancestors
 
 import com.badlogic.gdx.Game;
 =======
+||||||| merged common ancestors
+
+=======
+>>>>>>> Stashed changes
 ||||||| merged common ancestors
 
 =======
@@ -33,6 +38,7 @@ public class GameScreen extends AbstractGameScreen {
 		  super(game);  
 	  }	 
 
+<<<<<<< Updated upstream
 @Override 
 public void render (float deltaTime) { 
 	// Do not update game world when paused. 
@@ -68,6 +74,12 @@ public void render (float deltaTime) {
 
 @Override 
 public void render (float deltaTime) { 
+||||||| merged common ancestors
+@Override  public void render (float deltaTime) { 
+=======
+@Override 
+public void render (float deltaTime) { 
+>>>>>>> Stashed changes
 	// Do not update game world when paused. 
 	if (!paused) {   
 		// Update game world by the time that has passed    
@@ -156,6 +168,7 @@ public void render (float deltaTime) {
 		Gdx.input.setCatchBackKey(true);
 	}
 
+<<<<<<< Updated upstream
 	@Override
 	public void hide () {
 		worldRenderer.dispose();
@@ -181,6 +194,23 @@ public void render (float deltaTime) {
 	}
 
 }
+||||||| merged common ancestors
+	@Override
+	public void pause() {
+		// TODO Auto-generated method stub
+		
+	}}
+=======
+@Override  public void pause () {   
+	paused = true;
+}
+
+@Override  public void resume () { 
+	super.resume();  
+	// Only called on Android!   
+	paused = false;  }
+} 
+>>>>>>> Stashed changes
 ||||||| merged common ancestors
 	@Override
 	public void pause() {

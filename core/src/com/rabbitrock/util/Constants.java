@@ -17,6 +17,7 @@ public class Constants {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		public static final String TEXTURE_ATLAS_OBJECTS = "images/canyonbunny.pack";
 		public static final String TEXTURE_ATLAS_UI = "images/canyonbunny-ui.pack";
 		public static final String TEXTURE_ATLAS_LIBGDX_UI = "images/uiskin.atlas";
@@ -25,6 +26,11 @@ public class Constants {
 		public static final String SKIN_LIBGDX_UI = "images/uiskin.json";
 		public static final String SKIN_CANYONBUNNY_UI = "images/canyonbunny-ui.json";
 
+||||||| merged common ancestors
+		public static final String TEXTURE_ATLAS_OBJECTS = "images/canyonbunny.pack";
+=======
+		public static final String TEXTURE_ATLAS_OBJECTS = "../android/assets/images/canyonbunny.pack";
+>>>>>>> Stashed changes
 ||||||| merged common ancestors
 		public static final String TEXTURE_ATLAS_OBJECTS = "images/canyonbunny.pack";
 =======
@@ -51,12 +57,24 @@ public class Constants {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 		// Delay after game over
 		public static final float TIME_DELAY_GAME_OVER = 3;
 
 		// Game preferences file
 		public static final String PREFERENCES = "canyonbunny.prefs";
+||||||| merged common ancestors
+=======
+		public static final String TEXTURE_ATLAS_UI = 
+				"images/canyonbunny-ui.pack"; 
+		public static final String TEXTURE_ATLAS_LIBGDX_UI =  
+				"images/uiskin.atlas"; 
+		// Location of description file for skins  
+		public static final String SKIN_LIBGDX_UI =    
+				"images/uiskin.json"; 
+		public static final String SKIN_CANYONBUNNY_UI =      "images/canyonbunny-ui.json"; 
+>>>>>>> Stashed changes
 ||||||| merged common ancestors
 =======
 		public static final String TEXTURE_ATLAS_UI = 

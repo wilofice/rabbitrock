@@ -26,6 +26,12 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+import com.badlogic.gdx.Game;
+import com.rabbitrock.screens.MenuScreen;
+>>>>>>> Stashed changes
+||||||| merged common ancestors
+=======
 import com.badlogic.gdx.Game;
 import com.rabbitrock.screens.MenuScreen;
 >>>>>>> Stashed changes
@@ -510,6 +516,7 @@ public class WorldController extends InputAdapter {
 		}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ||||||| merged common ancestors
 }
 =======
@@ -543,6 +550,19 @@ public class WorldController extends InputAdapter {
 	  }
 
 
+||||||| merged common ancestors
+}
+=======
+	 private Game game;
+	  private void backToMenu () { 
+		  // switch to menu screen    
+		  game.setScreen(new MenuScreen(game)); 
+		  } 
+	  }
+
+
+
+>>>>>>> Stashed changes
 
 >>>>>>> Stashed changes
 
